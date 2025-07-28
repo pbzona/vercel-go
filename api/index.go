@@ -1,13 +1,18 @@
-package handler
+package api
 
 import (
 	"fmt"
 	"net/http"
+
+	"github.com/pbzona/vercel-go/helpers"
 )
 
-var message = "HELLO"
-
 func Handler(w http.ResponseWriter, r *http.Request) {
-	fmt.Printf("%+v", r)
-	fmt.Fprintf(w, "{'message': '%s'", message)
+	helpers.HandleByMethod(helpers.HandlerMap{
+		"GET": handleGet,
+	})
+}
+
+func handleGet(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "%+v", r)
 }
