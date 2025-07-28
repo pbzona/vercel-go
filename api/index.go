@@ -15,9 +15,11 @@ type ApiResponse struct {
 func Handler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
-	helpers.HandleByMethod(helpers.HandlerMap{
+	h := helpers.HandleByMethod(helpers.HandlerMap{
 		"GET": handleGet,
 	})
+
+	h.ServeHTTP(w, r)
 }
 
 func handleGet(w http.ResponseWriter, r *http.Request) {
