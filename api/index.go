@@ -3,8 +3,6 @@ package api
 import (
 	"bytes"
 	"encoding/json"
-	"fmt"
-	"log"
 	"net/http"
 
 	"github.com/pbzona/vercel-go/helpers"
